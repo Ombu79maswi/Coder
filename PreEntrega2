@@ -1,7 +1,6 @@
 import openai
 import matplotlib.pyplot as plt
 import pandas as pd
-import numpy as np
 
 # Configuración de la API de OpenAI
 openai.api_key = "tu_api_key_aqui"
@@ -9,6 +8,9 @@ openai.api_key = "tu_api_key_aqui"
 def generar_respuesta(prompt, max_tokens=100, temperature=0.7):
     """
     Función para generar respuestas de texto usando OpenAI GPT.
+    - prompt: Texto de entrada para el modelo.
+    - max_tokens: Número máximo de tokens en la respuesta.
+    - temperature: Nivel de aleatoriedad en las respuestas del modelo.
     """
     response = openai.Completion.create(
         engine="text-davinci-003",
@@ -21,6 +23,7 @@ def generar_respuesta(prompt, max_tokens=100, temperature=0.7):
 def generar_imagen(prompt):
     """
     Función para generar imágenes usando OpenAI DALL-E.
+    - prompt: Descripción de la imagen a generar.
     """
     response = openai.Image.create(
         prompt=prompt,
@@ -30,26 +33,39 @@ def generar_imagen(prompt):
     return response['data'][0]['url']
 
 # 1. Gestión de Renta y Control de Morosos
+# Prompt para generar un recordatorio sobre un pago pendiente
 prompt_renta = "El inquilino en Calle Falsa 123 tiene un pago pendiente de $500 desde hace 30 días. Genera un recordatorio con un interés acumulado del 5%."
 print("Prompt:", prompt_renta)
 output_renta = generar_respuesta(prompt_renta)
 print("Respuesta del modelo:")
 print(output_renta)
 
-# 2. Generación de imagen para el recordatorio (si aplica)
-prompt_imagen_renta = "Diseña un recordatorio visual para un inquilino con un pago pendiente de $500, con interés acumulado de 5%."
-url_imagen_renta = generar_imagen(prompt_imagen_renta)
-print("URL de la imagen generada:", url_imagen_renta)
+# Usar el output del modelo de texto para generar un prompt de imagen
+if output_renta:
+    prompt_imagen_renta = f"Crea una representación visual basada en el siguiente texto: {output_renta}"
+    url_imagen_renta = generar_imagen(prompt_imagen_renta)
+    print("URL de la imagen generada:", url_imagen_renta)
+else:
+    print("No se requiere generación de imagen para este caso.")
 
-# 3. Cálculo y Distribución de Expensas
+# 2. Cálculo y Distribución de Expensas
+# Prompt para calcular y dividir expensas entre las unidades
 prompt_expensas = "Calcula las expensas para un consorcio con $2400 en gastos comunes, distribuidos entre 3 unidades: A (50m2), B (30m2) y C (20m2)."
 print("Prompt:", prompt_expensas)
 output_expensas = generar_respuesta(prompt_expensas)
 print("Respuesta del modelo:")
 print(output_expensas)
 
-# 4. Visualización del Estado Financiero
-# Crear datos ficticios para visualización
+# Usar el output del modelo de texto para generar un prompt de imagen
+if output_expensas:
+    prompt_imagen_expensas = f"Crea un gráfico explicativo basado en el siguiente cálculo: {output_expensas}"
+    url_imagen_expensas = generar_imagen(prompt_imagen_expensas)
+    print("URL de la imagen generada:", url_imagen_expensas)
+else:
+    print("No se requiere generación de imagen para este caso.")
+
+# 3. Visualización del Estado Financiero
+# Crear datos ficticios para visualizar pagos pendientes y expensas
 data = {
     'Unidad': ['A', 'B', 'C'],
     'Pagos Pendientes ($)': [500, 200, 300],
@@ -58,21 +74,27 @@ data = {
 df = pd.DataFrame(data)
 
 # Visualizar datos en un gráfico de barras
+# Mostrando pagos pendientes y expensas por unidad
 df.plot(kind='bar', x='Unidad', stacked=True, title='Estado Financiero')
 plt.ylabel('Monto ($)')
 plt.show()
 
-# 5. Recomendaciones para Optimización de Rentas
+# 4. Recomendaciones para Optimización de Rentas
+# Prompt para generar recomendaciones sobre ajustes de renta
 prompt_rentas = "Recomienda ajustes de renta para una propiedad en el barrio Palermo, basada en un análisis del mercado local."
 print("Prompt:", prompt_rentas)
 output_rentas = generar_respuesta(prompt_rentas)
 print("Respuesta del modelo:")
 print(output_rentas)
 
-# 6. Generación de imagen para optimización de rentas (si aplica)
-prompt_imagen_rentas = "Genera un gráfico que represente la tendencia de precios en el mercado inmobiliario en Palermo."
-url_imagen_rentas = generar_imagen(prompt_imagen_rentas)
-print("URL de la imagen generada:", url_imagen_rentas)
+# Usar el output del modelo de texto para generar un prompt de imagen
+if output_rentas:
+    prompt_imagen_rentas = f"Genera una representación visual basada en el siguiente análisis: {output_rentas}"
+    url_imagen_rentas = generar_imagen(prompt_imagen_rentas)
+    print("URL de la imagen generada:", url_imagen_rentas)
+else:
+    print("No se requiere generación de imagen para este caso.")
 
 # Conclusión
-print("\nDemostración completada. Hemos mostrado el funcionamiento de los módulos básicos del asistente, integrando generación de texto e imágenes.")
+# Mostrar mensaje final indicando que la demostración ha concluido
+print("\nDemostración completada. Hemos mostrado el funcionamiento de los módulos básicos del asistente, integrando generación de texto e imágenes, minimizando consultas innecesarias.")
