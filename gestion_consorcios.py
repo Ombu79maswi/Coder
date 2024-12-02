@@ -47,13 +47,21 @@ print("Respuesta del modelo:")
 print(output_renta)
 
 # 2. Cálculo y Distribución de Expensas
-prompt_expensas = "Calcula las expensas para un consorcio con $2400 en gastos comunes, distribuidos entre 3 unidades: A (50m2), B (30m2) y C (20m2)."
+# Prompt para calcular y dividir expensas entre las unidades
+prompt_expensas = (
+    "Calcula la distribución de $2400 en expensas entre 3 unidades: A (50m2), B (30m2) y C (20m2). "
+    "Explica brevemente el cálculo indicando que las proporciones se basan en los metros cuadrados totales (100m2): "
+    "A=50/100, B=30/100, C=20/100. Luego muestra los resultados finales en este formato: "
+    "'Proporciones: A=50%, B=30%, C=20%. Resultados: Unidad A: $[monto], Unidad B: $[monto], Unidad C: $[monto]'. "
+    "La respuesta debe ser breve, clara y no incluir pasos detallados."
+)
 print("Prompt:", prompt_expensas)
 output_expensas = generar_respuesta(prompt_expensas)
 print("Respuesta del modelo:")
 print(output_expensas)
 
-# Crear gráfico con matplotlib para visualizar las expensas
+# Crear gráfico con matplotlib
+# Datos calculados manualmente o a partir del modelo
 expensas_data = {
     'Unidad': ['A', 'B', 'C'],
     'Expensas ($)': [1200, 720, 480]  # Distribución proporcional: 50%, 30%, 20%
