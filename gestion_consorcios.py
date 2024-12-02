@@ -75,6 +75,7 @@ plt.xlabel('Unidades')
 plt.show()
 
 # 3. Visualización del Estado Financiero
+# Crear datos ficticios para visualizar pagos pendientes y expensas
 data = {
     'Unidad': ['A', 'B', 'C'],
     'Pagos Pendientes ($)': [500, 200, 300],
@@ -83,24 +84,27 @@ data = {
 df = pd.DataFrame(data)
 
 # Visualizar datos en un gráfico de barras
+# Mostrando pagos pendientes y expensas por unidad
 df.plot(kind='bar', x='Unidad', stacked=True, title='Estado Financiero')
 plt.ylabel('Monto ($)')
 plt.show()
 
+# Explicación breve del gráfico
+explicacion_grafico = (
+    "El gráfico muestra los pagos pendientes y las expensas mensuales por unidad, representados en barras apiladas. "
+    "Permite visualizar el estado financiero de cada unidad."
+)
+print(explicacion_grafico)
+
+
 # 4. Recomendaciones para Optimización de Rentas
-prompt_rentas = "Recomienda ajustes específicos de renta solo para las propiedades con pagos pendientes significativos. Sugiere acciones claras para mejorar la situación financiera de esas unidades."
-print("Respuesta del modelo completa:")
-output_rentas = """
-Para la propiedad A:
-- Ofrecer un descuento temporal en el alquiler a cambio de un plan de pago para saldar la deuda de expensas.
-- Incentivar el pago puntual mediante descuentos en meses futuros.
-
-Para la propiedad B:
-- Negociar un plan de pago accesible con el inquilino para el monto pendiente y reducir la carga de expensas.
-- Mantener la renta estable, pero aumentar el seguimiento para evitar nuevas deudas.
-
-Para la propiedad C:
-- Mantener el monitoreo actual y no realizar ajustes adicionales ya que no presenta pagos pendientes significativos.
-"""
+# Prompt para generar recomendaciones sobre ajustes de renta
+prompt_rentas = (
+    "Recomienda estrategias muy breves para incentivar el pago de deudas en las unidades A, B y C. "
+    "Unidad A: $500 pendientes; Unidad B: $200 pendientes; Unidad C: $300 pendientes. "
+    "Ofrece descuentos temporales o planes de pago simples para que se pongan al día. Máximo tres recomendaciones cortas."
+)
+print("Prompt:", prompt_rentas)
+output_rentas = generar_respuesta(prompt_rentas)
 print("Respuesta del modelo:")
 print(output_rentas)
