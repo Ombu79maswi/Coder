@@ -15,9 +15,9 @@ def generar_respuesta(prompt, max_tokens=150, temperature=0.7):
     """
     # Implementación de few-shot prompting para mayor precisión
     examples = (
-        "Ejemplo 1: El inquilino en Calle Verdadera 456 tiene un pago pendiente de $300 desde hace 20 días. Genera un recordatorio con un interés acumulado del 3%. "
+        "Ejemplo 1: El inquilino en Calle San Martin 433 tiene un pago pendiente de $300 desde hace 20 días. Genera un recordatorio con un interés acumulado del 3%. "
         "Respuesta esperada: Recordatorio generado para el inquilino en Calle Verdadera 456. Monto pendiente: $300. Interés acumulado: $9.\n"
-        "Ejemplo 2: El inquilino en Calle Imaginaria 789 tiene un pago pendiente de $150 desde hace 10 días. Genera un recordatorio con un interés acumulado del 2%. "
+        "Ejemplo 2: El inquilino en Calle Cordoba 729 tiene un pago pendiente de $150 desde hace 10 días. Genera un recordatorio con un interés acumulado del 2%. "
         "Respuesta esperada: Recordatorio generado para el inquilino en Calle Imaginaria 789. Monto pendiente: $150. Interés acumulado: $3."
     )
     prompt = f"{examples}\nAhora, {prompt}. Responde de manera breve y priorizando los puntos clave."
@@ -35,7 +35,7 @@ def generar_respuesta(prompt, max_tokens=150, temperature=0.7):
 
 # 1. Gestión de Renta y Control de Morosos
 prompt_renta = (
-    "El inquilino en Avenida San Martín 452 tiene un pago pendiente de $500 desde hace 30 días. "
+    "El inquilino en Avenida San Martín 433 tiene un pago pendiente de $500 desde hace 30 días. "
     "Calcula directamente el interés acumulado al 5% y el monto total de la deuda (pago pendiente + intereses). "
     "Genera un mensaje completo y directo al inquilino, como: "
     "'Estimado [Nombre del Inquilino], le recordamos que tiene un pago pendiente de $500 desde hace 30 días. "
