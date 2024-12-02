@@ -1,15 +1,32 @@
 Gestión de Consorcios
 
-Este proyecto contiene un script en Python que utiliza los modelode de AI de ChatGPT y Dall-E para gestionar la renta, gastos y recomendaciones financieras de un consorcio. Proporciona herramientas para la gestión de inquilinos, el cálculo y distribución de expensas, visualizaciones del estado financiero, y recomendaciones específicas para mejorar la situación económica de cada propiedad.
+Este proyecto contiene scripts para gestionar propiedades, distribuir expensas y controlar pagos pendientes de un consorcio. Utiliza la API de OpenAI para generar recordatorios automáticos y recomendaciones, y matplotlib y pandas para visualizar datos financieros.
 
-Archivos en el Proyecto
 
-gestion_consorcios.py: Script principal que realiza las siguientes funciones:
 
-Gestión de renta y control de morosos.
+Funcionalidades
 
-Cálculo y distribución de expensas.
+Recordatorios de Pago:
 
-Visualización del estado financiero de las unidades.
+Mensajes automáticos para inquilinos con deudas, incluyendo el cálculo de intereses.
 
-Recomendaciones de optimización de rentas.
+Distribución de Expensas:
+
+Calcula y distribuye las expensas entre las unidades según su tamaño, con visualización en gráficos.
+
+Estado Financiero:
+
+Gráfico que muestra pagos pendientes y expensas mensuales por unidad.
+
+Recomendaciones de Pago:
+
+Sugerencias para incentivar a los inquilinos a pagar sus deudas, como descuentos o planes de pago
+
+
+Requisitos
+
+Python 3.7+
+
+Bibliotecas: openai, matplotlib, pandas.
+
+Cuenta con acceso a la API de OpenAI.
