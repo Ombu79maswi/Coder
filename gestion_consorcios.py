@@ -3,7 +3,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # Configuración de la API de OpenAI
-openai.api_key = "tu_api_key_aqui"
+openai.api_key = ""
+
 
 def generar_respuesta(prompt, max_tokens=150, temperature=0.7):
     """
@@ -33,7 +34,13 @@ def generar_respuesta(prompt, max_tokens=150, temperature=0.7):
     return response['choices'][0]['message']['content'].strip()
 
 # 1. Gestión de Renta y Control de Morosos
-prompt_renta = "El inquilino en Calle Falsa 123 tiene un pago pendiente de $500 desde hace 30 días. Genera un recordatorio con un interés acumulado del 5%."
+prompt_renta = (
+    "El inquilino en Avenida San Martín 452 tiene un pago pendiente de $500 desde hace 30 días. "
+    "Calcula directamente el interés acumulado al 5% y el monto total de la deuda (pago pendiente + intereses). "
+    "Genera un mensaje completo y directo al inquilino, como: "
+    "'Estimado [Nombre del Inquilino], le recordamos que tiene un pago pendiente de $500 desde hace 30 días. "
+    "El monto total de la deuda, incluyendo intereses acumulados al 5%, asciende a $506.85. Por favor, regularice su situación a la brevedad.'"
+)
 print("Prompt:", prompt_renta)
 output_renta = generar_respuesta(prompt_renta)
 print("Respuesta del modelo:")
