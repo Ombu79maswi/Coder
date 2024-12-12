@@ -29,4 +29,3 @@ Python 3.7+
 
 Bibliotecas: openai, matplotlib, pandas.
 
-Cuenta con acceso a la API de OpenAI.
