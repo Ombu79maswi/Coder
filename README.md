@@ -27,5 +27,5 @@ Requisitos
 
 Python 3.7+
 
-Bibliotecas: openai, matplotlib, pandas.
+Bibliotecas: openai, matplotlib, pandas, streamlit, re
 
